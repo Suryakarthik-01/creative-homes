@@ -1,43 +1,100 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
-
-# dependencies
+# ─────────────────────────────────────────────
+#  Dependencies
+# ─────────────────────────────────────────────
 node_modules/
+.pnp
+.pnp.js
+.yarn/install-state.gz
 
-# Expo
+# ─────────────────────────────────────────────
+#  Expo
+# ─────────────────────────────────────────────
 .expo/
 dist/
 web-build/
+web-report/
 expo-env.d.ts
 
-# Native
+# ─────────────────────────────────────────────
+#  Native build outputs
+# ─────────────────────────────────────────────
+/ios/
+/android/
 .kotlin/
-*.orig.*
+
+# Certificates / signing
 *.jks
 *.p8
 *.p12
 *.key
 *.mobileprovision
+*.certSigningRequest
+*.provisionprofile
+GoogleService-Info.plist
+google-services.json
 
-# Metro
+# ─────────────────────────────────────────────
+#  Metro bundler
+# ─────────────────────────────────────────────
 .metro-health-check*
+.metro-cache/
 
-# debug
+# ─────────────────────────────────────────────
+#  Environment variables  ← NEVER commit these
+# ─────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.local
+
+# ─────────────────────────────────────────────
+#  Build & cache artefacts
+# ─────────────────────────────────────────────
+build/
+*.orig.*
+*.tsbuildinfo
+.turbo/
+.cache/
+__pycache__/
+*.pyc
+
+# ─────────────────────────────────────────────
+#  EAS / Expo Application Services
+# ─────────────────────────────────────────────
+.easignore
+eas-update/
+
+# ─────────────────────────────────────────────
+#  Debug logs
+# ─────────────────────────────────────────────
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+*.log
+logs/
 
-# macOS
+# ─────────────────────────────────────────────
+#  Test & coverage
+# ─────────────────────────────────────────────
+coverage/
+.nyc_output/
+junit.xml
+
+# ─────────────────────────────────────────────
+#  Editor & OS artefacts
+# ─────────────────────────────────────────────
 .DS_Store
+Thumbs.db
 *.pem
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# local env files
-.env*.local
-
-# typescript
-*.tsbuildinfo
-
-app-example
-
-# generated native folders
-/ios
-/android
+# ─────────────────────────────────────────────
+#  Miscellaneous
+# ─────────────────────────────────────────────
+app-example/
+*.orig
