@@ -13,6 +13,7 @@ import { useFocusEffect, useRouter } from "expo-router";
 import { supabase } from "@/lib/superbase";
 import { Property } from "@/types";
 import { Ionicons } from "@expo/vector-icons";
+import FeatureCard from "@/components/Feature";
 
 export default function HomeScreen() {
   const { user } = useUser();
@@ -116,7 +117,7 @@ export default function HomeScreen() {
                 <FlatList
                   data={featured}
                   keyExtractor={(items) => items.id}
-                  renderItem={({ item }) => <Text>{item.title}</Text>}
+                  renderItem={({ item }) => <FeatureCard property={item}/>}
                   horizontal
                   showsHorizontalScrollIndicator={false}
                   contentContainerStyle={{ paddingHorizontal: 20 }}
