@@ -13,7 +13,7 @@ import { useFocusEffect, useRouter } from "expo-router";
 import { supabase } from "@/lib/superbase";
 import { Property } from "@/types";
 import { Ionicons } from "@expo/vector-icons";
-import FeatureCard from "@/components/Feature";
+import FeatureCard from "@/components/FeatureCard";
 
 export default function HomeScreen() {
   const { user } = useUser();
