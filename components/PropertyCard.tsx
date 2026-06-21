@@ -1,3 +1,4 @@
+import { useSavedProperty } from "@/hooks/useSavedProperty";
 import { formatPrice } from "@/lib/utlis";
 import { Property } from "@/types";
 import { Ionicons } from "@expo/vector-icons";
@@ -9,19 +10,19 @@ export default function PropertyCard({
   onUnsave,
   showSave = false,
 }: {
-  property: Property;
-  onUnsave?: () => void;
-  showSave?: boolean;
+  readonly property: Property;
+  readonly onUnsave?: () => void;
+  readonly showSave?: boolean;
 }) {
   const router = useRouter();
   const { isSaved, saveLoading, toggleSave } = useSavedProperty(
     property.id,
-    onUnsave
+    onUnsave,
   );
 
   return (
     <TouchableOpacity
-      onPress={() => router.push(`/(root)/property/${property.id}`)}
+      onPress={() => router.push(`/(root)/property/${property.id}` as any)}
       className="flex-row bg-white rounded-2xl mb-4 overflow-hidden"
       style={{
         shadowColor: "#000",

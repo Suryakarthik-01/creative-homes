@@ -1,19 +1,20 @@
-import {
-  View,
-  Text,
-  FlatList,
-  Image,
-  TouchableOpacity,
-  ActivityIndicator,
-} from "react-native";
-import React, { useCallback, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useUser } from "@clerk/expo";
-import { useFocusEffect, useRouter } from "expo-router";
+import FeatureCard from "@/components/FeatureCard";
+import PropertyCard from "@/components/PropertyCard";
 import { supabase } from "@/lib/superbase";
 import { Property } from "@/types";
+import { useUser } from "@clerk/expo";
 import { Ionicons } from "@expo/vector-icons";
-import FeatureCard from "@/components/FeatureCard";
+import { useFocusEffect, useRouter } from "expo-router";
+import React, { useCallback, useState } from "react";
+import {
+  ActivityIndicator,
+  FlatList,
+  Image,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
   const { user } = useUser();
@@ -117,7 +118,7 @@ export default function HomeScreen() {
                 <FlatList
                   data={featured}
                   keyExtractor={(items) => items.id}
-                  renderItem={({ item }) => <FeatureCard property={item}/>}
+                  renderItem={({ item }) => <FeatureCard property={item} />}
                   horizontal
                   showsHorizontalScrollIndicator={false}
                   contentContainerStyle={{ paddingHorizontal: 20 }}
@@ -133,7 +134,7 @@ export default function HomeScreen() {
         }
         renderItem={({ item }) => (
           <View className="px-5">
-            <Text>{item.title}</Text>
+            <PropertyCard property={item} showSave={true} />
           </View>
         )}
         ListEmptyComponent={

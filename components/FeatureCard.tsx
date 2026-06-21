@@ -1,9 +1,9 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
-import React from "react";
-import { Property } from "@/types";
-import { useRouter } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
 import { formatPrice } from "@/lib/utlis";
+import { Property } from "@/types";
+import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import React from "react";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 
 export default function FeatureCard({ property }: { property: Property }) {
   const router = useRouter();
@@ -19,7 +19,7 @@ export default function FeatureCard({ property }: { property: Property }) {
         elevation: 4,
         opacity: property.is_sold ? 0.5 : 1,
       }}
-      onPress={() => router.push("/(root)/property/${property.id}")}
+      onPress={() => router.push(`/(root)/property/${property.id}`)}
     >
       <Image
         source={{ uri: property.images[0] }}
@@ -58,22 +58,20 @@ export default function FeatureCard({ property }: { property: Property }) {
           <Text className="text-blue-600 font-bold text-base">
             {formatPrice(property.price)}
           </Text>
-        
-        <View className="flex-row items-center gap-3">
-          <View className="flex-row items-center gap-1">
-            <Ionicons name="bed-outline" size={13} color="#687280"/>
-            <Text className="text-xs text-gray-500">
-              {property.bedrooms}
-            </Text>
-          </View>
 
-          <View className="flex-row items-center gap-1">
-            <Ionicons name="water-outline" size={13} color="#687280"/>
-            <Text className="text-xs text-gray-500">
-              {property.bathrooms}
-            </Text>
+          <View className="flex-row items-center gap-3">
+            <View className="flex-row items-center gap-1">
+              <Ionicons name="bed-outline" size={13} color="#687280" />
+              <Text className="text-xs text-gray-500">{property.bedrooms}</Text>
+            </View>
+
+            <View className="flex-row items-center gap-1">
+              <Ionicons name="water-outline" size={13} color="#687280" />
+              <Text className="text-xs text-gray-500">
+                {property.bathrooms}
+              </Text>
+            </View>
           </View>
-        </View>
         </View>
       </View>
     </TouchableOpacity>
