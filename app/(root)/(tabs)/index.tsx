@@ -14,6 +14,7 @@ import { supabase } from "@/lib/superbase";
 import { Property } from "@/types";
 import { Ionicons } from "@expo/vector-icons";
 import FeatureCard from "@/components/FeatureCard";
+import PropertyCard from "@/components/PropertyCard";
 
 export default function HomeScreen() {
   const { user } = useUser();
@@ -133,7 +134,7 @@ export default function HomeScreen() {
         }
         renderItem={({ item }) => (
           <View className="px-5">
-            <Text>{item.title}</Text>
+            <PropertyCard property={item} showSave={true} />
           </View>
         )}
         ListEmptyComponent={

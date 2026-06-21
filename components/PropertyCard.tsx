@@ -3,25 +3,26 @@ import { Property } from "@/types";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
+import { useSavedProperty } from "@/hooks/useSavedProperty";
 
 export default function PropertyCard({
   property,
   onUnsave,
   showSave = false,
 }: {
-  property: Property;
-  onUnsave?: () => void;
-  showSave?: boolean;
+  readonly property: Property;
+  readonly onUnsave?: () => void;
+  readonly showSave?: boolean;
 }) {
   const router = useRouter();
   const { isSaved, saveLoading, toggleSave } = useSavedProperty(
     property.id,
     onUnsave
   );
-
+ 
   return (
     <TouchableOpacity
-      onPress={() => router.push(`/(root)/property/${property.id}`)}
+      onPress={() => router.push(`/(root)/property/${property.id}` as any)}
       className="flex-row bg-white rounded-2xl mb-4 overflow-hidden"
       style={{
         shadowColor: "#000",
