@@ -1,9 +1,9 @@
+import { useSavedProperty } from "@/hooks/useSavedProperty";
 import { formatPrice } from "@/lib/utlis";
 import { Property } from "@/types";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import { useSavedProperty } from "@/hooks/useSavedProperty";
 
 export default function PropertyCard({
   property,
@@ -17,9 +17,9 @@ export default function PropertyCard({
   const router = useRouter();
   const { isSaved, saveLoading, toggleSave } = useSavedProperty(
     property.id,
-    onUnsave
+    onUnsave,
   );
- 
+
   return (
     <TouchableOpacity
       onPress={() => router.push(`/(root)/property/${property.id}` as any)}
